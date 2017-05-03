@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TestManagement.MainWindow"
         Title="Unified Test Management" Height="716" Width="1179">
-    <TabControl HorizontalAlignment="Left" Height="646" Margin="0,35,0,0" VerticalAlignment="Top" Width="1169">
+    <TabControl Margin="1,42,1,7">
         <TabItem Header="Baseline" HorizontalAlignment="Left" Width="61"/>
         <TabItem Header="Test Results">
             <Grid Background="#FFE5E5E5">
@@ -12,7 +12,7 @@
             </Grid>
         </TabItem>
         <TabItem Header="Test case">
-            <Grid Height="605" Width="1149" Margin="0,0,10,0" Background="#FFC3C3C3">
+            <Grid Margin="0,0,6,0" Background="#FFC3C3C3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="1129*"/>
@@ -40,7 +40,11 @@
                     <ComboBoxItem Content="Olympia"/>
                 </ComboBox>
                 <ToolBarTray HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="1149" Grid.ColumnSpan="2">
-                    <ToolBar HorizontalAlignment="Left" Height="13" VerticalAlignment="Top" Width="24"/>
+                    <ToolBar HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="1149" Margin="0,0,-1125,-11">
+                        <Button/>
+                        <Button/>
+                        <Button/>
+                    </ToolBar>
                 </ToolBarTray>
             </Grid>
         </TabItem>
