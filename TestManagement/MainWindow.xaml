@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TestManagement.MainWindow"
         Title="Unified Test Management" Height="716" Width="1179">
-    <TabControl Margin="1,42,1,7">
+    <TabControl Margin="0,10,0,4" HorizontalAlignment="Left" Width="1169">
         <TabItem Header="Baseline" HorizontalAlignment="Left" Width="61"/>
         <TabItem Header="Test Results">
             <Grid Background="#FFE5E5E5">
@@ -12,20 +12,22 @@
             </Grid>
         </TabItem>
         <TabItem Header="Test case">
-            <Grid Margin="0,0,6,0" Background="#FFC3C3C3">
+            <Grid Height="605" Margin="2,0" Background="#FFC3C3C3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="1129*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Baseline" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Height="26" Width="53" Grid.Column="1"/>
                 <Label Content="Test Name" Grid.Column="1" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TestCaseBlahBlah" VerticalAlignment="Top" Width="120" Margin="85,87,0,0" Grid.Column="1"/>
+                <TextBox x:Name="NameTestBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TestCaseBlahBlah" VerticalAlignment="Top" Width="120" Margin="85,87,0,0" Grid.Column="1"/>
                 <Label Content="Test ID" Grid.Column="1" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1234" VerticalAlignment="Top" Width="120" Margin="85,120,0,0" Grid.Column="1" IsEnabled="False"/>
+                <TextBox x:Name="IdTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1234" VerticalAlignment="Top" Width="120" Margin="85,120,0,0" Grid.Column="1" IsEnabled="False"/>
                 <Label Content="Type" Grid.Column="1" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="Kayak" Grid.Column="1" HorizontalAlignment="Left" Margin="85,154,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <RadioButton Content="QTP" Grid.Column="1" HorizontalAlignment="Left" Margin="85,175,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="Manual" Grid.Column="1" HorizontalAlignment="Left" Margin="85,196,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="FilenameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TestCaseBlahBlah" VerticalAlignment="Top" Width="265" Margin="10,249,0,0" Grid.Column="1"/>
+                <Button x:Name="BrowseButton" Content="Browse" Grid.Column="1" HorizontalAlignment="Left" Margin="165,277,0,0" VerticalAlignment="Top" Width="75"/>
+                <RadioButton x:Name="KayakRadio" Content="Kayak" Grid.Column="1" HorizontalAlignment="Left" Margin="85,154,0,0" VerticalAlignment="Top" IsChecked="True" Checked="KayakRadio_Checked"/>
+                <RadioButton x:Name="QTPRadio" Content="QTP" Grid.Column="1" HorizontalAlignment="Left" Margin="85,175,0,0" VerticalAlignment="Top" Checked="QTPRadio_Checked"/>
+                <RadioButton x:Name="ManualRadio" Content="Manual" Grid.Column="1" HorizontalAlignment="Left" Margin="85,196,0,0" VerticalAlignment="Top" Checked="ManualRadio_Checked"/>
                 <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="506" Margin="295,89,0,0" VerticalAlignment="Top" Width="435" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible">
                     <FlowDocument>
                         <Paragraph>
@@ -33,9 +35,9 @@
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="295,58,0,0" VerticalAlignment="Top"/>
-                <Label Content="Test Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top"/>
-                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="85,60,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="295,34,0,0" VerticalAlignment="Top"/>
+                <Label Content="Filename" Grid.Column="1" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="62"/>
+                <ComboBox x:Name="BaselineCombo" Grid.Column="1" HorizontalAlignment="Left" Margin="85,60,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
                     <ComboBoxItem Content="Apache"/>
                     <ComboBoxItem Content="Olympia"/>
                 </ComboBox>
@@ -46,6 +48,12 @@
                         <Button/>
                     </ToolBar>
                 </ToolBarTray>
+                <ToolBar x:Name="toolBar" Grid.Column="1" HorizontalAlignment="Left" Margin="295,60,0,0" VerticalAlignment="Top" Width="435" Height="24">
+                    <Button x:Name="button" Height="19" VerticalAlignment="Top" Width="25"/>
+                </ToolBar>
+                <Button x:Name="button1" Content="Add Record" Grid.Column="1" HorizontalAlignment="Left" Margin="835,476,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+                <Label Content="Test Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top"/>
+                
             </Grid>
         </TabItem>
     </TabControl>

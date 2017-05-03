@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TestDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DRSTRANGE-PC;Initial Catalog=TestDB;Integrated Security=True" SettingsObjectName="TestManagement.Properties.Settings" SettingsPropertyName="TestDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tests" Member="Tests">
+    <Type Name="Test">
+      <Column Name="TestID" Member="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Test_TestLabel" Member="TestLabels" ThisKey="ID" OtherKey="ID" Type="TestLabel" />
+      <Association Name="Test_Run" Member="Runs" ThisKey="ID" OtherKey="ID" Type="Run" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TestLabels" Member="TestLabels">
+    <Type Name="TestLabel">
+      <Column Name="TestID" Member="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Test_TestLabel" Member="Test" ThisKey="ID" OtherKey="ID" Type="Test" IsForeignKey="true" />
+      <Association Name="Label_TestLabel" Member="Label" ThisKey="LabelID" OtherKey="LabelID" Type="Label" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Runs" Member="Runs">
+    <Type Name="Run">
+      <Column Name="RunID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TestID" Member="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RunDateTime" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Test_Run" Member="Test" ThisKey="ID" OtherKey="ID" Type="Test" IsForeignKey="true" />
+      <Association Name="Resource_Run" Member="Resource" ThisKey="ResourceID" OtherKey="ResourceID" Type="Resource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Resources" Member="Resources">
+    <Type Name="Resource">
+      <Column Name="ResourceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ResourceName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceIPAddress" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Baseline" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Resource_Run" Member="Runs" ThisKey="ResourceID" OtherKey="ResourceID" Type="Run" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Labels" Member="Labels">
+    <Type Name="Label">
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Label_TestLabel" Member="TestLabels" ThisKey="LabelID" OtherKey="LabelID" Type="TestLabel" />
+    </Type>
+  </Table>
+</Database>
